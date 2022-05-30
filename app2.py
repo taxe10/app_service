@@ -5,7 +5,6 @@ import numpy as np
 
 from helper_utils import load_file_contents, validate_file, arrange_file, FileNotValid
 
-
 LIST_ABC = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
             'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
 LIST_NUM = list(range(26))
@@ -30,7 +29,7 @@ def str2int(segment, shape, max_shape):
         else:
             out_array.append(DEFAULT_NUM)
         if len(out_array) == current_shape + length:
-            out_array = out_array+[DEFAULT_NUM]*(max_shape-current_shape)
+            out_array = out_array + [DEFAULT_NUM] * (max_shape - current_shape)
             length = len(out_array)
             current_shape = next(shapecycle)
     return out_array
@@ -46,7 +45,7 @@ def int2str(segment):
     '''
     out_text = ''
     for element in segment:
-        out_text=out_text+LIST_ABC[min(element,DEFAULT_NUM)]
+        out_text = out_text + LIST_ABC[min(element, DEFAULT_NUM)]
     return out_text
 
 
@@ -60,10 +59,13 @@ def convert_message(data_type, shape, message):
     '''
     if data_type == 1:
         max_shape = np.max(shape)
-        conv_shape = np.array([len(shape), max_shape])
+        if len(shape)>1:
+            conv_shape = np.array([len(shape), max_shape])
+        else:
+            conv_shape = np.array([max_shape])
         conv_msg = str2int(''.join(message), shape, max_shape)
     if data_type == 2:
-        if len(shape)>1:
+        if len(shape) > 1:
             conv_shape = np.repeat(shape[1], shape[0])
         else:
             conv_shape = shape
@@ -78,8 +80,7 @@ if __name__ == '__main__':
 
     data_type, shape, message = load_file_contents(args.message)
     validate_file(data_type, shape, message)
-    
+
     conv_msg, conv_shape = convert_message(data_type, shape, message)
-    print(conv_msg)
-    out = arrange_file(3-data_type, conv_shape, conv_msg)
+    out = arrange_file(3 - data_type, conv_shape, conv_msg)
     sys.stdout.write(out)
