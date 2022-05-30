@@ -57,15 +57,7 @@ def arrange_file(data_type, shape, message):
     if data_type == 2:
         if type(message[0])==list:
             message = list(itertools.chain.from_iterable(message))
-        new_msg = ''.join(map(str, message))
+        new_msg = ','.join(map(str, message))
     new_shape = ';'.join(shape.astype(str))
     out = f'{data_type},{new_shape},{new_msg}'
     return out
-    
-    # if data_type == 1:
-    #     out = str(data_type) + ',' + ';'.join(shape.astype(str)) + ',' + ''.join(message)
-    # if data_type == 2:
-    #     if type(message[0])==list:
-    #         message = list(itertools.chain.from_iterable(message))
-    #     out = str(data_type) + ',' + ';'.join(shape.astype(str)) + ','+','.join(map(str, message))
-    # return out
