@@ -9,7 +9,7 @@ source myenv/bin/activate
 pip install -r requirements.txt
 ```
 
-Once the installation is complete, start the app service by executing the followin:
+Once the installation is complete, start the app service by executing the following:
 ```
 python3 app_service.py
 ```
