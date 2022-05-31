@@ -8,7 +8,7 @@ class FileNotValid(Exception):
   pass
 
 
-def load_file_contents(contents):
+def load_message(contents):
   '''
   This function loads the contents of the file
   Args:
@@ -24,7 +24,7 @@ def load_file_contents(contents):
   return int(data_type), shape, message
 
 
-def validate_file(data_type, shape, message):
+def validate_message(data_type, shape, message):
     '''
     This function validates the file
     '''
@@ -42,9 +42,10 @@ def validate_file(data_type, shape, message):
     pass
 
 
-def arrange_file(data_type, shape, message):
+def arrange_message(data_type, shape, message):
     '''
-    This function arranges the file as TYPE, SHAPE, MESSAGE
+    This function arranges the message as TYPE, SHAPE, MESSAGE
+    Example: data_type=2, shape=[2,2], message=[[1,2],[3,4]] --> 2,2;2,1,2,3,4
     Args:
         data_type:      [int] Type of data, where 1 is int and 2 is string
         shape:          [array] Shape of data
