@@ -14,4 +14,4 @@ Once the installation is complete, start the app service by executing the follow
 python3 app_service.py
 ```
 
-All set! You can now access the backend service at: [http://localhost:8080/api/app_service/docs#/]
+All set! You can now access the backend service at: http://localhost:8080/api/app_service/docs#/
