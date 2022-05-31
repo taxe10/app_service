@@ -3,7 +3,7 @@ import argparse
 import itertools
 import numpy as np
 
-from helper_utils import load_file_contents, validate_file, arrange_file, FileNotValid
+from helper_utils import load_message, validate_message, arrange_message, FileNotValid
 
 
 def reverse_message(data_type, shape, message):
@@ -46,9 +46,9 @@ if __name__ == '__main__':
     parser.add_argument('message', help='filename')
     args = parser.parse_args()
 
-    data_type, shape, message = load_file_contents(args.message)
-    validate_file(data_type, shape, message)
+    data_type, shape, message = load_message(args.message)
+    validate_message(data_type, shape, message)
 
     rev_msg = reverse_message(data_type, shape, message)
-    out = arrange_file(data_type, shape, rev_msg)
+    out = arrange_message(data_type, shape, rev_msg)
     sys.stdout.write(out)
